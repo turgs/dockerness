@@ -1,0 +1,29 @@
+# Create a container for:
+# ------------------------
+# 1. `gems` whose existance is just to "cache" them
+#    to be used by other containsers.
+#
+# 2. `db` whose existance it to be used by the web app
+#
+# 3. `web` which runs ruby and rails, reading from the
+#    `gems`, and accessing the `db`.
+version: "2"
+
+services:
+  db:
+    image: postgres:12-alpine
+  web:
+    build:
+      context: .
+    ports:
+      - "3001:3000"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    volumes_from:
+      - gems
+  gems:
+    image: busybox
+    volumes:
+      - /ruby_gems
