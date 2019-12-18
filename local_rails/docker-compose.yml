@@ -36,4 +36,4 @@ networks:
     driver: bridge
   default:
     external:
-      name: my-pre-existing-network
+      name: dockernet
