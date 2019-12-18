@@ -12,6 +12,8 @@ version: "2"
 services:
   db:
     image: postgres:12-alpine
+    networks:
+      - dockernet
   web:
     build:
       context: .
@@ -23,7 +25,15 @@ services:
       - db
     volumes_from:
       - gems
+    networks:
+      - dockernet
   gems:
     image: busybox
     volumes:
       - /ruby_gems
+networks:
+  dockernet:
+    driver: bridge
+  default:
+    external:
+      name: my-pre-existing-network
