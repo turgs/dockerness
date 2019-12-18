@@ -23,6 +23,9 @@ services:
       - db
     volumes_from:
       - gems
+    command: bin/guard -p -l 1
+    stdin_open: true
+    tty: true
   gems:
     image: busybox
     volumes:
