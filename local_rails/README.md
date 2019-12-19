@@ -84,7 +84,7 @@ docker-compose run --rm web bin/rails db:migrate
 docker-compose up
 ```
 
-Open up http://localhost:3001
+Open up http://localhost:3001/users
 
 
 
