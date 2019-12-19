@@ -1,3 +1,78 @@
+## Setup my docker containers for Rails development
+
+### Starting a new project from scratch
+
+Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
+
+```
+curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/Dockerfile' > Dockerfile
+curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/docker-compose.yml' > docker-compose.yml
+echo $'source "https://rubygems.org"\ngem "rails"' > Gemfile
+```
+
+Create the containers, then run bundle install and rails new:
+
+```
+docker-compose run --rm web bundle install
+docker-compose run --rm web bundle exec rails new . -d postgresql --force --skip-keeps --skip-action-mailer --skip-action-cable --skip-test --skip-git
+```
+
+Change owner of generated files back to me:
+
+```
+sudo chown -R $USER:$USER .
+```
+
+Ensure app can talk to be DB. Edit `config/database.yml`:
+
+```
+default: &default
+  ...
+  host: db
+  port: 5432
+  username: postgres
+```
+
+Setup the DB:
+
+```
+docker-compose run --rm web bin/rails db:create
+docker-compose run --rm web bin/rails db:migrate
+```
+
+### Enable Gems and DB
+
+Load gems and setup database:
+
+```
+docker-compose run --rm web bundle
+docker-compose run --rm web bin/rails db:setup
+sudo chown -R $USER:$USER .
+```
+
+### Enable views to render from console.
+
+Add this to `config/environments/development.rb`:
+
+```
+config.web_console.permissions = begin
+  addrinfo = Socket.ip_address_list.detect(&:ipv4_private?)
+  addrinfo.try(:ip_address).sub(/\.(\d{1,3})$/, '.0/16')
+end
+```
+
+### Start the app
+
+```
+docker-compose up
+```
+
+Open up http://localhost:3001
+
+
+
+## Appendix
+
 I've largely taken inspiration from:  
 https://jbhannah.net/articles/rails-development-with-docker
 
