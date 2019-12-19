@@ -1,4 +1,6 @@
-## Setup my docker containers for Rails development
+# Setup my docker containers for Rails development
+
+Follow these steps, one-by-one, until you get to the Appendix.
 
 ### Starting a new project from scratch
 
