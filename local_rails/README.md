@@ -2,7 +2,7 @@
 
 Follow these steps, one-by-one, until you get to the Appendix.
 
-### Starting a new project from scratch
+#### Starting a new project from scratch
 
 Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
 
@@ -42,7 +42,7 @@ docker-compose run --rm web bin/rails db:create
 docker-compose run --rm web bin/rails db:migrate
 ```
 
-### Enable Gems and DB
+#### Enable Gems and DB
 
 Load gems and setup database:
 
@@ -52,7 +52,7 @@ docker-compose run --rm web bin/rails db:setup
 sudo chown -R $USER:$USER .
 ```
 
-### Enable views to render from console.
+#### Enable views to render from console.
 
 Add this to `config/environments/development.rb`:
 
@@ -63,7 +63,7 @@ config.web_console.permissions = begin
 end
 ```
 
-### Start the app
+#### Start the app
 
 ```
 docker-compose up
@@ -73,7 +73,7 @@ Open up http://localhost:3001
 
 
 
-## Appendix
+# Appendix
 
 I've largely taken inspiration from:  
 https://jbhannah.net/articles/rails-development-with-docker
