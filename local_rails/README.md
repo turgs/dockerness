@@ -4,6 +4,13 @@ Follow these steps, one-by-one, until you get to the Appendix.
 
 #### Starting a new project from scratch
 
+Create a new folder to work in:
+
+```
+mkdir my_new_folder
+cd my_new_folder
+```
+
 Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
 
 ```
