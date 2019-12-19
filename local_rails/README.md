@@ -70,6 +70,14 @@ config.web_console.permissions = begin
 end
 ```
 
+### Get a dummy view to render
+
+```
+docker-compose run --rm web bin/rails g scaffold user name:text
+docker-compose run --rm web bin/rails db:migrate
+```
+
+
 #### Start the app
 
 ```
