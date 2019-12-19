@@ -84,8 +84,9 @@ docker-compose run --rm web bin/rails db:migrate
 docker-compose up
 ```
 
-Open up http://localhost:3001/users
+Open up http://localhost:3001/users, which returns a 500 Internal Server Error.
 
+![error](500_error.png)
 
 
 # Appendix
