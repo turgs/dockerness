@@ -13,7 +13,7 @@ mkdir my_new_folder
 cd my_new_folder
 ```
 
-```shell
+```bash
 # Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
 curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/Dockerfile' > Dockerfile
 curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/docker-compose.yml' > docker-compose.yml
