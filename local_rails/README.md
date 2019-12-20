@@ -24,6 +24,7 @@ Create the containers, then run bundle install and rails new:
 ```
 docker-compose run --rm web bundle install
 docker-compose run --rm web bundle exec rails new . -d postgresql --force --skip-keeps --skip-action-mailer --skip-action-cable --skip-test --skip-git
+mkdir app/assets/images
 ```
 
 Change owner of generated files back to me:
