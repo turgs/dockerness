@@ -13,31 +13,25 @@ mkdir my_new_folder
 cd my_new_folder
 ```
 
-Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
-
-```
+```shell
+# Add the `Dockerfile`, `docker-compose.yml`, and `Gemfile` files:
 curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/Dockerfile' > Dockerfile
 curl -s 'https://raw.githubusercontent.com/turgs/dockerness/master/local_rails/docker-compose.yml' > docker-compose.yml
 echo $'source "https://rubygems.org"\ngem "rails"' > Gemfile
-```
 
-Create the containers, then run bundle install and rails new:
 
-```
+# Create the containers, then run bundle install and rails new:
 docker-compose run --rm web bundle install
 docker-compose run --rm web bundle exec rails new . -d postgresql --force --skip-keeps --skip-action-mailer --skip-action-cable --skip-test --skip-git
 mkdir -p app/assets/images
-```
 
-Change owner of generated files back to me:
-
-```
+# Change owner of generated files back to me:
 sudo chown -R $USER:$USER .
 ```
 
 Ensure app can talk to be DB. Edit `config/database.yml`:
 
-```
+```yml
 default: &default
   ...
   host: db
@@ -47,7 +41,7 @@ default: &default
 
 Setup the DB:
 
-```
+```shell
 docker-compose run --rm web bin/rails db:create
 docker-compose run --rm web bin/rails db:migrate
 ```
@@ -56,7 +50,7 @@ docker-compose run --rm web bin/rails db:migrate
 
 Ensure app can talk to be DB. Edit `config/database.yml`:
 
-```
+```yml
 default: &default
   ...
   host: db
@@ -70,7 +64,7 @@ default: &default
 
 Load gems and setup database:
 
-```
+```shell
 docker-compose run --rm web bundle
 docker-compose run --rm web bin/rails db:setup
 sudo chown -R $USER:$USER .
@@ -80,7 +74,7 @@ sudo chown -R $USER:$USER .
 
 Add this to `config/environments/development.rb`:
 
-```
+```ruby
 config.web_console.permissions = begin
   addrinfo = Socket.ip_address_list.detect(&:ipv4_private?)
   addrinfo.try(:ip_address).sub(/\.(\d{1,3})$/, '.0/16')
@@ -89,7 +83,7 @@ end
 
 ### Get a dummy view to render
 
-```
+```shell
 docker-compose run --rm web bin/rails g scaffold user name:text
 docker-compose run --rm web bin/rails db:migrate
 ```
