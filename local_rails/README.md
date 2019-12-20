@@ -110,3 +110,5 @@ A good reference is:
 https://github.com/vovimayhem/docker-compose-rails-dev-example
 
 https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development
+
+https://medium.com/@david.charles.weber/useful-docker-compose-with-rails-c6edcd0b9f13
