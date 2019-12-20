@@ -4,7 +4,7 @@ Follow these steps, one-by-one, until you get to the Appendix.
 
 ## 1. Initial setup
 
-#### a. Starting a new project from scratch
+### a. Starting a new project from scratch
 
 Create a new folder to work in:
 
@@ -52,7 +52,7 @@ docker-compose run --rm web bin/rails db:create
 docker-compose run --rm web bin/rails db:migrate
 ```
 
-#### b. Existing project
+### b. Existing project
 
 Ensure app can talk to be DB. Edit `config/database.yml`:
 
