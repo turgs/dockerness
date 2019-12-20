@@ -22,6 +22,7 @@ echo $'source "https://rubygems.org"\ngem "rails"' > Gemfile
 # Create the containers, then run bundle install and rails new:
 docker-compose run --rm web bundle install
 docker-compose run --rm web bundle exec rails new . -d postgresql --force --skip-keeps --skip-action-mailer --skip-action-cable --skip-test --skip-git
+docker-compose run --rm web bin/rails webpacker:install
 
 # Change owner of generated files back to me:
 sudo chown -R $USER:$USER .
