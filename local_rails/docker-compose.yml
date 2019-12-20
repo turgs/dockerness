@@ -7,7 +7,7 @@
 #
 # 3. `web` which runs ruby and rails, reading from the
 #    `gems`, and accessing the `db`.
-version: "3"
+version: "2"
 
 services:
   db:
