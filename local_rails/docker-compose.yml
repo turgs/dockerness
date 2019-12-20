@@ -7,7 +7,7 @@
 #
 # 3. `web` which runs ruby and rails, reading from the
 #    `gems`, and accessing the `db`.
-version: "2"
+version: "3"
 
 services:
   db:
@@ -23,6 +23,8 @@ services:
       - db
     volumes_from:
       - gems
+    stdin_open: true
+    tty: true
   gems:
     image: busybox
     volumes:
