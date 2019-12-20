@@ -108,3 +108,5 @@ https://jbhannah.net/articles/rails-development-with-docker
 
 A good reference is:  
 https://github.com/vovimayhem/docker-compose-rails-dev-example
+
+https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development
